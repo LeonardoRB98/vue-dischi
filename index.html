@@ -12,11 +12,12 @@
   <body>
     <div id="container">
       <div id="prova">
-        <select class="" name="">
-          <option value="" v-for="genre in filteredGenre">{{genre}}</option>
+        <select class="" name="" v-model="selectedGenre" @change="">
+          <option value="All">all</option>
+          <option  v-for="genre in filteredGenre">{{genre}}</option>
         </select>
       </div>
-      <div class="album" v-for="album in albums">
+      <div class="album" v-for="album in albums" v-if="selectedGenre == album.genre">
         <div class="thumbnail">
           <img :src="album.poster" :alt="album.author">
         </div>
@@ -24,9 +25,7 @@
           <h2>{{album.title}}</h2>
         </div>
         <h4 class="artist">{{album.author}}</h4>
-
       </div>
-
     </div>
     <script src="js/script.js" charset="utf-8"></script>
   </body>
