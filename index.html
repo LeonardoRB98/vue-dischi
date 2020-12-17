@@ -11,15 +11,22 @@
   </head>
   <body>
     <div id="container">
+      <div id="prova">
+        <select class="" name="">
+          <option value="" v-for="genre in filteredGenre">{{genre}}</option>
+        </select>
+      </div>
       <div class="album" v-for="album in albums">
         <div class="thumbnail">
-          <img :src="album.poster" alt="">
+          <img :src="album.poster" :alt="album.author">
         </div>
         <div class="title">
           <h2>{{album.title}}</h2>
         </div>
         <h4 class="artist">{{album.author}}</h4>
+
       </div>
+
     </div>
     <script src="js/script.js" charset="utf-8"></script>
   </body>

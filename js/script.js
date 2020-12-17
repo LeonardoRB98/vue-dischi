@@ -10,8 +10,15 @@ var app = new Vue({
   el:'#container',
   data: {
     albums: [],
+    filteredGenre: [],
   },
   methods: {
+    genreFilter: function () {
+      let self= this;
+
+    }
+  },
+  created: function() {
 
   },
   mounted: function() {
@@ -19,9 +26,17 @@ var app = new Vue({
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(function (result) {
       self.albums = result.data.response;
-      console.log(result.data.response);
-      console.log(self.albums);
+      self.albums.forEach((album) => {
+        if (!self.filteredGenre.includes(album.genre)) {
+          self.filteredGenre.push(album.genre)
+        }
+
+      });
+      console.log(self.filteredGenre);
     })
+
+
+
   }
 
 });
