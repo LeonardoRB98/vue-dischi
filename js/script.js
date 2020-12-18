@@ -12,6 +12,7 @@ var app = new Vue({
     albums: [],
     filteredGenre: [],
     selectedGenre: 'All',
+    filteredAlbum: [],
   },
   methods: {
     genreFilter: function () {
@@ -22,7 +23,13 @@ var app = new Vue({
         }
       });
     },
-  },
+      changeGenre: function(genre) {
+        let self= this;
+        if (this.selectedGenre == genre) {
+          this.filteredAlbum.push(self.album)
+        }
+      }
+    },
   mounted: function() {
     let self = this;
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
