@@ -14,10 +14,10 @@
       <div id="prova">
         <select class="" name="" v-model="selectedGenre" @change="">
           <option value="All">all</option>
-          <option  v-for="genre in filteredGenre">{{genre}}</option>
+          <option :value="genre" v-for="genre in filteredGenre">{{genre}}</option>
         </select>
       </div>
-      <div class="album" v-for="album in albums" v-if="selectedGenre == album.genre">
+      <div class="album" v-for="album in albums" v-if="selectedGenre == album.genre || selectedGenre == 'All'">
         <div class="thumbnail">
           <img :src="album.poster" :alt="album.author">
         </div>
@@ -25,7 +25,7 @@
           <h2>{{album.title}}</h2>
         </div>
         <h4 class="artist">{{album.author}}</h4>
-      </div>
+      </div> <!--v-if="selectedGenre == album.genre"-->
     </div>
     <script src="js/script.js" charset="utf-8"></script>
   </body>
